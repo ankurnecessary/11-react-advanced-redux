@@ -1,6 +1,6 @@
-import React, { Fragment } from 'react'
-import PropTypes from 'prop-types'
-import MainHeader from './MainHeader'
+import React, { Fragment } from 'react';
+import PropTypes from 'prop-types';
+import MainHeader from './MainHeader';
 
 const Layout = (props) => {
   return (
@@ -8,11 +8,11 @@ const Layout = (props) => {
       <MainHeader />
       <main>{props.children}</main>
     </Fragment>
-  )
-}
+  );
+};
 
-export default Layout
+export default Layout;
 
 Layout.propTypes = {
   children: PropTypes.node
-}
+};

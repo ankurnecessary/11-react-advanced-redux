@@ -1,6 +1,6 @@
-import React from 'react'
-import CartButton from '../Cart/CartButton'
-import classes from './MainHeader.module.css'
+import React from 'react';
+import CartButton from '../Cart/CartButton';
+import classes from './MainHeader.module.css';
 
 const MainHeader = (props) => {
   return (
@@ -14,7 +14,7 @@ const MainHeader = (props) => {
         </ul>
       </nav>
     </header>
-  )
-}
+  );
+};
 
-export default MainHeader
+export default MainHeader;
