@@ -1,8 +1,17 @@
-import Card from '../UI/Card';
-import classes from './ProductItem.module.css';
+import React from 'react'
+import PropTypes from 'prop-types'
+import Card from '../UI/Card'
+import classes from './ProductItem.module.css'
+import { useDispatch } from 'react-redux'
+import { cartActions } from '../../store'
 
 const ProductItem = (props) => {
-  const { title, price, description } = props;
+  const { title, price, description } = props
+  const dispatch = useDispatch()
+
+  function addToCartHandler () {
+    dispatch(cartActions.addToCart({ id: title, ...props }))
+  }
 
   return (
     <li className={classes.item}>
@@ -13,11 +22,17 @@ const ProductItem = (props) => {
         </header>
         <p>{description}</p>
         <div className={classes.actions}>
-          <button>Add to Cart</button>
+          <button onClick={addToCartHandler}>Add to Cart</button>
         </div>
       </Card>
     </li>
-  );
-};
+  )
+}
 
-export default ProductItem;
+export default ProductItem
+
+ProductItem.propTypes = {
+  title: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
+  description: PropTypes.string.isRequired
+}
