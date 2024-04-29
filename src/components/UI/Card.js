@@ -1,4 +1,6 @@
-import classes from './Card.module.css';
+import React from 'react'
+import PropTypes from 'prop-types'
+import classes from './Card.module.css'
 
 const Card = (props) => {
   return (
@@ -7,7 +9,12 @@ const Card = (props) => {
     >
       {props.children}
     </section>
-  );
-};
+  )
+}
 
-export default Card;
+export default Card
+
+Card.propTypes = {
+  className: PropTypes.string,
+  children: PropTypes.node
+}

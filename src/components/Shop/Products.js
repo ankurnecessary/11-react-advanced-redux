@@ -1,5 +1,6 @@
-import ProductItem from './ProductItem';
-import classes from './Products.module.css';
+import React from 'react'
+import ProductItem from './ProductItem'
+import classes from './Products.module.css'
 
 const Products = (props) => {
   return (
@@ -13,7 +14,7 @@ const Products = (props) => {
         />
       </ul>
     </section>
-  );
-};
+  )
+}
 
-export default Products;
+export default Products
