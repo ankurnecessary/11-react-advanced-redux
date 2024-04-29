@@ -1,16 +1,16 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import Card from '../UI/Card'
-import classes from './ProductItem.module.css'
-import { useDispatch } from 'react-redux'
-import { cartActions } from '../../store'
+import React from 'react';
+import PropTypes from 'prop-types';
+import Card from '../UI/Card';
+import classes from './ProductItem.module.css';
+import { useDispatch } from 'react-redux';
+import { cartActions } from '../../store/cart-slice';
 
 const ProductItem = (props) => {
-  const { title, price, description } = props
-  const dispatch = useDispatch()
+  const { title, price, description } = props;
+  const dispatch = useDispatch();
 
   function addToCartHandler () {
-    dispatch(cartActions.addToCart({ id: title, ...props }))
+    dispatch(cartActions.addToCart({ id: title, ...props }));
   }
 
   return (
@@ -26,13 +26,13 @@ const ProductItem = (props) => {
         </div>
       </Card>
     </li>
-  )
-}
+  );
+};
 
-export default ProductItem
+export default ProductItem;
 
 ProductItem.propTypes = {
   title: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
   description: PropTypes.string.isRequired
-}
+};
