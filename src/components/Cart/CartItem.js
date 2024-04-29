@@ -1,7 +1,20 @@
-import classes from './CartItem.module.css';
+import React from 'react'
+import PropTypes from 'prop-types'
+import classes from './CartItem.module.css'
+import { useDispatch } from 'react-redux'
+import { cartActions } from '../../store'
 
 const CartItem = (props) => {
-  const { title, quantity, total, price } = props.item;
+  const { title, quantity, total, price } = props.item
+  const dispatch = useDispatch()
+
+  function decreaseQuantityHandler () {
+    dispatch(cartActions.decreaseQuantity(props.item.id))
+  }
+
+  function increaseQuantityHandler () {
+    dispatch(cartActions.increaseQuantity(props.item.id))
+  }
 
   return (
     <li className={classes.item}>
@@ -17,12 +30,16 @@ const CartItem = (props) => {
           x <span>{quantity}</span>
         </div>
         <div className={classes.actions}>
-          <button>-</button>
-          <button>+</button>
+          <button onClick={decreaseQuantityHandler}>-</button>
+          <button onClick={increaseQuantityHandler}>+</button>
         </div>
       </div>
     </li>
-  );
-};
+  )
+}
 
-export default CartItem;
+export default CartItem
+
+CartItem.propTypes = {
+  item: PropTypes.object
+}
