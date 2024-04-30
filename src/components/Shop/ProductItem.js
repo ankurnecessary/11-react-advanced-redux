@@ -6,15 +6,15 @@ import { useDispatch } from 'react-redux';
 import { cartActions } from '../../store/cart-slice';
 
 const ProductItem = (props) => {
-  const { title, price, description } = props;
+  const { id, title, price, description } = props;
   const dispatch = useDispatch();
 
   function addToCartHandler () {
-    dispatch(cartActions.addToCart({ id: title, ...props }));
+    dispatch(cartActions.addItemToCart({ ...props }));
   }
 
   return (
-    <li className={classes.item}>
+    <li className={classes.item} id={id}>
       <Card>
         <header>
           <h3>{title}</h3>
@@ -32,6 +32,7 @@ const ProductItem = (props) => {
 export default ProductItem;
 
 ProductItem.propTypes = {
+  id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
   description: PropTypes.string.isRequired

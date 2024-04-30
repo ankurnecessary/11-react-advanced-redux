@@ -10,40 +10,36 @@ import { createSlice } from '@reduxjs/toolkit';
 */
 const initialCartState = {
   items: [],
-  showCart: true
+  totalQuantity: 0
 };
 const cartSlice = createSlice({
   name: 'cart',
   initialState: initialCartState,
   reducers: {
-    addToCart (state, action) {
-      const selectedProduct = state.items.find(item => item.id === action.payload.id);
-      if (selectedProduct) {
-        selectedProduct.quantity++;
-        selectedProduct.total += selectedProduct.price;
+    addItemToCart (state, action) {
+      const newItem = action.payload;
+      const existingItem = state.items.find(item => item.id === newItem.id);
+      state.totalQuantity++;
+      if (existingItem) {
+        existingItem.quantity++;
+        existingItem.total += existingItem.price;
       } else {
-        action.payload.quantity = 1;
-        action.payload.total = action.payload.price;
-        state.items.push(action.payload);
+        newItem.quantity = 1;
+        newItem.total = newItem.price;
+        state.items.push(newItem);
       }
     },
-    increaseQuantity (state, action) {
-      const selectedProduct = state.items.find(item => item.id === action.payload);
-      selectedProduct.quantity++;
-      selectedProduct.total += selectedProduct.price;
-    },
-    decreaseQuantity (state, action) {
-      const selectedProduct = state.items.find(item => item.id === action.payload);
-      if (selectedProduct.quantity > 1) {
-        selectedProduct.quantity--;
-        selectedProduct.total -= selectedProduct.price;
+    removeItemFromCart (state, action) {
+      const id = action.payload;
+      const existingItem = state.items.find(item => item.id === id);
+      state.totalQuantity--;
+      if (existingItem.quantity > 1) {
+        existingItem.quantity--;
+        existingItem.total -= existingItem.price;
       } else {
-        const selectedProductIdx = state.items.indexOf(selectedProduct);
+        const selectedProductIdx = state.items.indexOf(existingItem);
         state.items.splice(selectedProductIdx, 1);
       }
-    },
-    toggleCart (state) {
-      state.showCart = !state.showCart;
     }
   }
 });
