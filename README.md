@@ -112,3 +112,9 @@ function hello(data = '') {
 ```
 
 [React Folder structure](https://www.youtube.com/watch?v=UUga4-z7b6s)
+
+Generates an random hash in browser.
+
+```javascript
+crypto.randomUUID();
+```

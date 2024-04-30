@@ -1,4 +1,5 @@
-import { Fragment } from 'react';
+import React, { Fragment } from 'react';
+import PropTypes from 'prop-types';
 import MainHeader from './MainHeader';
 
 const Layout = (props) => {
@@ -11,3 +12,7 @@ const Layout = (props) => {
 };
 
 export default Layout;
+
+Layout.propTypes = {
+  children: PropTypes.node
+};

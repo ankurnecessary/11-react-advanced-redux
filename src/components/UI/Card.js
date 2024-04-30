@@ -1,3 +1,5 @@
+import React from 'react';
+import PropTypes from 'prop-types';
 import classes from './Card.module.css';
 
 const Card = (props) => {
@@ -11,3 +13,8 @@ const Card = (props) => {
 };
 
 export default Card;
+
+Card.propTypes = {
+  className: PropTypes.string,
+  children: PropTypes.node
+};
