@@ -69,7 +69,10 @@ Working with:
 61. useSelector() is used to select data from redux store.
 62. useDispatch() hook is used to call reducer functions of the redux store.
 63. Both useSelector() and useDispatch() are part of react-redux library.
-64. 
+64. Reducers are always side-effect free. Whether those reducer functions belong to redux or useReducer() hook. So we cannot fire an HTTP request from inside of any reducer function.
+65. When we deal with side-effects along with redux or useReducer() (or probably with useContext() hook too) hook, we use either useEffect() or we handle them inside action creator.
+66. Prefer reducers when we have to write synchronous and side-effect free code. Like data transformation. We should not use components or action creators for such requests.
+67. For async code or code with side-effects one should prefer action creators or components. And never use reducers for such code.
 
 [Eslint configuration - Best linting configuration is to use "format on save" and don't use "formatting option of ES Lint"](https://www.udemy.com/course/react-the-complete-guide-incl-redux/learn/lecture/8231814#questions/20789494)
 
