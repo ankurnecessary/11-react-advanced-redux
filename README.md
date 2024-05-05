@@ -74,6 +74,7 @@ Working with:
 66. When we deal with side-effects along with redux or useReducer() (or probably with useContext() hook too) hook, we use either useEffect() or we handle them inside action creator.
 67. Prefer reducers when we have to write synchronous and side-effect free code. Like data transformation. We should not use components or action creators for such requests.
 68. For async code or code with side-effects one should prefer action creators or components. And never use reducers for such code. And generally we use action creator thunks for that. [Action creators](https://github.com/ankurnecessary/11-react-advanced-redux/blob/main/src/store/cart-action-creators.js)
+69. [How to use redux dev-tool in the browser?](https://www.udemy.com/course/react-the-complete-guide-incl-redux/learn/lecture/25600378#questions)
 
 [Eslint configuration - Best linting configuration is to use "format on save" and don't use "formatting option of ES Lint"](https://www.udemy.com/course/react-the-complete-guide-incl-redux/learn/lecture/8231814#questions/20789494)
 
