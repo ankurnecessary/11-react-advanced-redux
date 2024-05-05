@@ -1,16 +1,42 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Cart from './components/Cart/Cart';
 import Layout from './components/Layout/Layout';
 import Products from './components/Shop/Products';
-import { useSelector } from 'react-redux';
+import Notification from './components/UI/Notification';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchCartData, sendCartData } from './store/cart-action-creators';
+
+let isInitial = true;
 
 function App () {
+  const dispatch = useDispatch();
   const showCart = useSelector(state => state.ui.cartIsVisible);
+  const cart = useSelector(state => state.cart);
+  const notification = useSelector(state => state.ui.notification);
+
+  useEffect(() => {
+    dispatch(fetchCartData());
+  }, []);
+
+  useEffect(() => {
+    if (isInitial) {
+      isInitial = false;
+      return;
+    }
+
+    if (cart.changed) {
+      dispatch(sendCartData(cart));
+    }
+  }, [cart]);
+
   return (
-    <Layout>
-      {showCart && <Cart />}
-      <Products />
-    </Layout>
+    <>
+      {notification && <Notification {...notification} />}
+      <Layout>
+        {showCart && <Cart />}
+        <Products />
+      </Layout>
+    </>
   );
 }
 
